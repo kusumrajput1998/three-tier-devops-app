@@ -99,13 +99,3 @@ Kusum Rajput
 Aspiring DevOps Engineer 🚀
 
 
----
-
-# ✅ FINAL STEP: COMMIT & PUSH (PowerShell)
-
-After saving the file, run:
-
-```powershell
-git add README.md
-git commit -m "Add project documentation"
-git push
