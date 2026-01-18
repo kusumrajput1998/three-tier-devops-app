@@ -1,0 +1,35 @@
+name: CI - Three Tier DevOps App
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Backend Docker Image
+        run: |
+          docker build -t three-tier-backend ./backend
+
+      - name: Verify Project Structure
+        run: |
+          test -f docker-compose.yml
+          test -f backend/app.py
+          test -f backend/Dockerfile
+          test -f database/init.sql
+          test -f frontend/index.html
+
+      - name: CI completed successfully
+        run: echo "CI pipeline executed successfully"
